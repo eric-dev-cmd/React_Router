@@ -1,44 +1,23 @@
 import React, { Component } from "react";
-import { Link, Route } from "react-router-dom";
-
-const menus = [
-  {
-    name: "Home",
-    to: "/",
-    exact: true,
-  },
-  {
-    name: "About",
-    to: "/about",
-    exact: false,
-  },
-  {
-    name: "Dashboard",
-    to: "/dashboard",
-    exact: false,
-  },
-];
-console.log(menus);
-
-const MenuLink = ({ label, to, activeOnlyWhenExact }) => {
-  return (
-    <Route
-      path={to}
-      exact={activeOnlyWhenExact}
-      children={({ match }) => {
-        var active = match ? "active nav-item abc" : "";
-        var active1 = match ? "active" : "";
-        return (
-          <li className={`nav-item ${active}`}>
-            <Link to={to} className={`nav-link ${active1}`}>
-              {label}
-            </Link>
-          </li>
-        );
-      }}
-    />
-  );
-};
+import { NavLink, Route } from "react-router-dom";
+// const MenuLink = ({ label, to, activeOnlyWhenExact }) => {
+//   return (
+//     <Route
+//       path={to}
+//       exact={activeOnlyWhenExact}
+//       children={({ match }) => {
+//         var active = match ? "active nav-item abc" : "";
+//         return (
+//           <li className={active}>
+//             <Link exact to={to} className="nav-link active">
+//               {label}
+//             </Link>
+//           </li>
+//         );
+//       }}
+//     />
+//   );
+// };
 class Menu extends Component {
   render() {
     return (
@@ -58,44 +37,43 @@ class Menu extends Component {
           </button>
           <div className="collapse navbar-collapse" id="navbarNavDropdown">
             <ul className="navbar-nav">
-              {this.showMenus(menus)}
               {/* <MenuLink
-                label="Home"
-                to="/"
-                activeOnlyWhenExact={true}
-              ></MenuLink>
-              <MenuLink
-                label="About"
-                to="/about"
-                activeOnlyWhenExact={false}
-              ></MenuLink>
-              <MenuLink
-                label="Dashboard"
-                to="/dashboard"
-                activeOnlyWhenExact={false}
-              ></MenuLink> */}
-              {/* <li className="nav-item">
+              label="Home"
+              to="/"
+              activeOnlyWhenExact={true}
+            ></MenuLink>
+            <MenuLink
+              label="About"
+              to="/about"
+              activeOnlyWhenExact={false}
+            ></MenuLink>
+            <MenuLink
+              label="Dashboard"
+              to="/dashboard"
+              activeOnlyWhenExact={false}
+            ></MenuLink> */}
+              <li className="nav-item">
                 {/* <a href="/" className="nav-link active" aria-current="page">
                 Home
-              </a> 
+              </a> */}
                 <NavLink exact to="/" className="nav-link">
                   Home
                 </NavLink>
               </li>
               <li className="nav-item">
-                 <a href="/about" className="nav-link"></a>
+                {/* <a href="/about" className="nav-link"></a> */}
                 <NavLink to="/about" className="nav-link">
                   About
                 </NavLink>
               </li>
               <li className="nav-item">
-                 <a href="/dashboard" className="nav-link">
+                {/* <a href="/dashboard" className="nav-link">
                 Dashboard
-              </a> 
+              </a> */}
                 <NavLink to="/dashboard" className="nav-link">
                   Dashboard
                 </NavLink>
-              </li> */}
+              </li>
               {/* <li className="nav-item">
                <a href="/dashboard" className="nav-link">
                 Dashboard
@@ -135,22 +113,6 @@ class Menu extends Component {
       </nav>
     );
   }
-  showMenus = (menus) => {
-    var result = null;
-    if (menus.length > 0) {
-      result = menus.map((menu, index) => {
-        return (
-          <MenuLink
-            key={index}
-            label={menu.name}
-            to={menu.to}
-            activeOnlyWhenExact={menu.exact}
-          ></MenuLink>
-        );
-      });
-    }
-    return result;
-  };
 }
 
 export default Menu;

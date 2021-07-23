@@ -1,12 +1,9 @@
 import { Component } from "react";
-import Home from "./components/Home";
-import About from "./components/About";
-import NotFound from "./components/NotFound";
-import Dashboard from "./components/Dashboard";
 import "./App.css";
 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Menu from "./components/Menu";
+import routes from "./routes";
 
 class App extends Component {
   render() {
@@ -19,15 +16,29 @@ class App extends Component {
           {/* Content */}
 
           <Switch>
-            <Route path="/" exact component={Home}></Route>
-            <Route path="/about" component={About}></Route>
-            <Route path="/dashboard" component={Dashboard}></Route>
-            <Route component={NotFound}></Route>
+            {/* <Route path="/" exact component={Home}></Route> */}
+            {this.showRoutes(routes)}
           </Switch>
         </div>
       </Router>
     );
   }
+  showRoutes = (routes) => {
+    // console.log(routes);
+    var result = null;
+    if (routes.length > 0) {
+      result = routes.map((route, index) => {
+        return (
+          <Route
+            path={route.path}
+            exact={route.exact}
+            component={route.main}
+          ></Route>
+        );
+      });
+    }
+    return result;
+  };
 }
 
 export default App;
