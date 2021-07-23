@@ -42,6 +42,8 @@ class Products extends Component {
     // console.log(match);
     var url = match.url;
     console.log(match);
+    var { location } = this.props;
+    console.log(location);
     var result = null;
     if (products.length > 0) {
       result = products.map((product, index) => {

@@ -4,6 +4,8 @@ import Dashboard from "./components/Dashboard";
 import Products from "./components/Products";
 import NotFound from "./components/NotFound";
 import Contact from "./components/Contact";
+import Login from "./components/Login";
+
 import React from "react";
 {
   /* <Route path="/" exact component={Home}></Route> */
@@ -27,12 +29,19 @@ const routes = [
   {
     path: "/products",
     exact: false,
-    main: ({ match }) => <Products match={match} />,
+    main: ({ match, location }) => (
+      <Products match={match} location={location} />
+    ),
   },
   {
     path: "/contact",
     exact: false,
     main: () => <Contact />,
+  },
+  {
+    path: "/login",
+    exact: false,
+    main: ({ location }) => <Login location={location} />,
   },
   {
     path: "",
