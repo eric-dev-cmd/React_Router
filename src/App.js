@@ -30,6 +30,7 @@ class App extends Component {
       result = routes.map((route, index) => {
         return (
           <Route
+            key={index  }
             path={route.path}
             exact={route.exact}
             component={route.main}

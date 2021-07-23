@@ -17,6 +17,11 @@ const menus = [
     to: "/dashboard",
     exact: false,
   },
+  {
+    name: "Products",
+    to: "/products",
+    exact: false,
+  },
 ];
 console.log(menus);
 

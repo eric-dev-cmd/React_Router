@@ -1,7 +1,8 @@
 import Home from "./components/Home";
 import About from "./components/About";
-import NotFound from "./components/NotFound";
 import Dashboard from "./components/Dashboard";
+import Products from "./components/Products";
+import NotFound from "./components/NotFound";
 import React from "react";
 {
   /* <Route path="/" exact component={Home}></Route> */
@@ -21,6 +22,11 @@ const routes = [
     path: "/dashboard",
     exact: false,
     main: () => <Dashboard />,
+  },
+  {
+    path: "/products",
+    exact: false,
+    main: ({ match }) => <Products match={match} />,
   },
   {
     path: "",
